@@ -57,6 +57,7 @@ import { cookies } from "next/headers";
 import { PgVarchar } from "drizzle-orm/pg-core";
 import { eq } from "drizzle-orm";
 
+
 export const GET = async (request: NextRequest) => {
   const req = request.nextUrl;
   const uid = req.searchParams.get("user_id") as string;

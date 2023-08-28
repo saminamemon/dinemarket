@@ -1,8 +1,6 @@
 
-
 "use client"
 import React, { useEffect, useState } from 'react'
-
 import Image from 'next/image'
 import { client } from '@/lib/sanityClient'
 import { urlForImage } from '../../../sanity/lib/image'
@@ -10,7 +8,7 @@ import { Image as IImage } from 'sanity'
 import { FC } from "react";
 
  const getProductData = async () => {
-  const res = await client.fetch(`*[_type=="product"]{
+  const res = await client.fetch(`*[_type=="product" ]{
     price,
     _id,
     title,
@@ -33,7 +31,6 @@ interface IProduct {
     name: string
   }
 }
-
  const Allproducts: FC = () => {
   const [data, setData] = useState<IProduct[]>([]);
 
@@ -64,8 +61,6 @@ interface IProduct {
       console.error("Request failed with status:", res.status);
     }
   };
- 
-
 
   return (
     <>
@@ -86,11 +81,6 @@ interface IProduct {
               onClick={() => handleAddToCart(item._id)}
             >
               Add To Cart
-            </button> <button
-              className="border py-2 px-6 rounded bg-gray-900 text-white"
-              onClick={() => handleAddToCart(item._id)}
-            >
-              Add To Cart
             </button>
           </div>
         ))}
@@ -98,4 +88,5 @@ interface IProduct {
     </>
   );
 };
+
 export default Allproducts;
